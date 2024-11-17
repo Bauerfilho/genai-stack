@@ -1,4 +1,4 @@
-FROM langchain/langchain
+FROM langchain/langchain:1.0.0
 
 WORKDIR /app
 
@@ -16,6 +16,6 @@ COPY api.py .
 COPY utils.py .
 COPY chains.py .
 
-HEALTHCHECK CMD curl --fail http://localhost:8504
+HEALTHCHECK CMD ["curl", "--fail", "http://localhost:8504"]
 
 ENTRYPOINT [ "uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8504" ]
